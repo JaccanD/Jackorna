@@ -1,12 +1,10 @@
 /*Jack Noaksson, Jano6161; Jacob Didenbäck, jadi4034*/
 
 #mainCanvas {
-    border: 2px solid #004444;
-    display: block;
+    border: 2px solid magenta;
     background-image: url("../pics/projektbild.png");
     background-repeat: no-repeat;
     background-size: cover;
-    align
 }
 
 body {
@@ -27,8 +25,20 @@ body {
     display: block;
     margin: auto;
     width: 800px;
+    border-width: 20px;
+    border: 2px solid magenta;
+    border-radius: 10px;
+    transition-duration: 0.5s;
+    font-size: 30pt;
+    font-family: cursive;
 }
 
 #canvas-container {
-    
+    display: block;
+    width: 800px;
+    margin: auto;
+}
+
+.button:hover {
+    background-color: rgb(255, 138, 255);
 }
