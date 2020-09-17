@@ -1,7 +1,11 @@
 /*Jack Noaksson, Jano6161; Jacob Didenbäck, jadi4034*/
 
-canvas {
+#mainCanvas {
     border: 2px solid #004444;
+    display: block;
     width: 50%;
     margin: auto;
+    background-image: url("../pics/projektbild.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }

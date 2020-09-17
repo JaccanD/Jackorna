@@ -3,14 +3,15 @@ init = function() {
     var canvas = document.getElementById('mainCanvas');
     var context = canvas.getContext('2d');
 
-
     var SquatButton = new CanvasButton(0, 100, 0, 100);
     var pushupButton = new CanvasButton(0, 10, 0, 10);
     var shoulderPressButton = new CanvasButton(0, 20, 0, 20);
     var bicepsCurlButton = new CanvasButton(0, 30, 0, 30);
     var sittupButton = new CanvasButton(0, 40, 0, 40);
     var dumbBellButton = new CanvasButton(0, 50, 0, 50);
-    
+
+    var mainScreenButtons = { SquatButton, pushupButton, shoulderPressButton, bicepsCurlButton, sittupButton, dumbBellButton };
+
     processClick = function(event) {
         if (SquatButton.checkClick(event.x, event.y)) {
             console.log("Tryckte på knappen");
@@ -18,12 +19,6 @@ init = function() {
     }
 
     // Kod som körs
-    context.beginPath();
-    context.moveTo(80, 280);
-    context.lineTo(360, 50);
-    context.lineWidth = 10;
-    context.strokeStyle = '#aa00aa';
-    context.stroke();
     canvas.addEventListener("click", processClick);
 }
 
