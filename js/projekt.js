@@ -11,13 +11,18 @@ init = function() {
     var dumbBellButton = new CanvasButton(0, 50, 0, 50);
 
     var mainScreenButtons = [SquatButton, pushupButton, shoulderPressButton, bicepsCurlButton, sittupButton, dumbBellButton];
-    var mainScreen = new GameScreen(mainScreenButtons);
     var quizScreen = [];
     switchScreen = function(from, destination) {
-        for (var i = 0; from.length; i++) {
-            from[i].active = false;
+        console.log("byter");
+        var test = [];
+        for (var i = 0; i < from.length; i++) {
+            test.push(new CanvasButton(from[i]));
         }
-        for (var i = 0; destination.length; i++) {
+        for (var i = 0; i < from.length; i++) {
+            test[i].deactivate();
+            console.log(test[i].active);
+        }
+        for (var i = 0; i < destination.length; i++) {
             destination[i].active = true;
         }
 
@@ -25,12 +30,22 @@ init = function() {
     processClick = function(event) {
         if (mainScreenButtons[0].checkClick(event.x, event.y)) {
             switchScreen(mainScreenButtons, quizScreen);
+        } else {
+            console.log("Inte en knapp");
         }
     }
 
     // Kod som körs
     canvas.addEventListener("click", processClick);
 }
+
+//här har jack skrivit(om något ser tokigt ut!)
+
+function reloadGame() {
+    location.reload();
+}
+
+//här slutade jack
 
 // Klasser
 class CanvasButton {
@@ -52,6 +67,9 @@ class CanvasButton {
             }
         }
         return false;
+    }
+    deactivate() {
+        this.active = false;
     }
 }
 class GameScreen {
