@@ -9,6 +9,8 @@ init = function() {
     var shoulderPressButton = new CanvasButton(0, 20, 0, 20);
     var bicepsCurlButton = new CanvasButton(0, 30, 0, 30);
     var sittupButton = new CanvasButton(0, 40, 0, 40);
+    var dumbBellButton = new CanvasButton(0, 50, 0, 50);
+    
     processClick = function(event) {
         if (SquatButton.checkClick(event.x, event.y)) {
             console.log("Tryckte på knappen");
