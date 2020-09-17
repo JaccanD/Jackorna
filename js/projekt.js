@@ -6,12 +6,7 @@ init = function() {
 
     var SquatButton = new CanvasButton(0, 100, 0, 100);
 
-    context.beginPath();
-    context.moveTo(80, 280);
-    context.lineTo(360, 50);
-    context.lineWidth = 10;
-    context.strokeStyle = '#aa00aa';
-    context.stroke();
+
 
     processClick = function(event) {
         if (SquatButton.checkClick(event.x, event.y)) {
@@ -20,6 +15,12 @@ init = function() {
     }
 
     // Kod som körs
+    context.beginPath();
+    context.moveTo(80, 280);
+    context.lineTo(360, 50);
+    context.lineWidth = 10;
+    context.strokeStyle = '#aa00aa';
+    context.stroke();
     canvas.addEventListener("click", processClick);
 }
 
