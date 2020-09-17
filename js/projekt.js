@@ -1,3 +1,5 @@
+//Jack Noaksson, Jano6161; Jacob Didenbäck, jadi4034
+
 var canvas = document.getElementById('mainCanvas');
 var context = canvas.getContext('2d');
 
