@@ -1,10 +1,11 @@
 init = function() {
+    // Variabler och Funktioner
     var canvas = document.getElementById('mainCanvas');
     var context = canvas.getContext('2d');
 
 
-    var SquatButton = new CanvasButton(0, 1, 0, 1);
-    alert(SquatButton.xEnd);
+    var SquatButton = new CanvasButton(0, 100, 0, 100);
+
     context.beginPath();
     context.moveTo(80, 280);
     context.lineTo(360, 50);
@@ -13,10 +14,16 @@ init = function() {
     context.stroke();
 
     processClick = function(event) {
-
+        if (SquatButton.checkClick(event.x, event.y)) {
+            console.log("Tryckte på knappen");
+        }
     }
+
+    // Kod som körs
     canvas.addEventListener("click", processClick);
 }
+
+// Klasser
 class CanvasButton {
     constructor(xStart, xEnd, yStart, yEnd) {
         this.xStart = xStart;
@@ -26,8 +33,8 @@ class CanvasButton {
     }
 
     checkClick(x, y) {
-        if (xStart <= x && xEnd >= x) {
-            if (yStart <= y && yEnd >= y) {
+        if (this.xStart <= x && this.xEnd >= x) {
+            if (this.yStart <= y && this.yEnd >= y) {
                 return true;
             }
         }
