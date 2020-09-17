@@ -5,9 +5,10 @@ init = function() {
 
 
     var SquatButton = new CanvasButton(0, 100, 0, 100);
-
-
-
+    var pushupButton = new CanvasButton(0, 10, 0, 10);
+    var shoulderPressButton = new CanvasButton(0, 20, 0, 20);
+    var bicepsCurlButton = new CanvasButton(0, 30, 0, 30);
+    var sittupButton = new CanvasButton(0, 40, 0, 40);
     processClick = function(event) {
         if (SquatButton.checkClick(event.x, event.y)) {
             console.log("Tryckte på knappen");
@@ -31,9 +32,13 @@ class CanvasButton {
         this.xEnd = xEnd;
         this.yStart = yStart;
         this.yEnd = yEnd;
+        this.active = true;
     }
 
     checkClick(x, y) {
+        if (!this.active) {
+            return false;
+        }
         if (this.xStart <= x && this.xEnd >= x) {
             if (this.yStart <= y && this.yEnd >= y) {
                 return true;
