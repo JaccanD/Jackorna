@@ -3,34 +3,51 @@ init = function() {
     var canvas = document.getElementById('mainCanvas');
     var context = canvas.getContext('2d');
 
-    var SquatButton = new CanvasButton(400, 500, 100, 600);
+    var squatButton = new CanvasButton(0, 200, 0, 200);
     var pushupButton = new CanvasButton(0, 10, 0, 10);
     var shoulderPressButton = new CanvasButton(0, 20, 0, 20);
     var bicepsCurlButton = new CanvasButton(0, 30, 0, 30);
     var sittupButton = new CanvasButton(0, 40, 0, 40);
     var dumbBellButton = new CanvasButton(0, 50, 0, 50);
-
-    var mainScreenButtons = [SquatButton, pushupButton, shoulderPressButton, bicepsCurlButton, sittupButton, dumbBellButton];
-    var quizScreen = [];
-    switchScreen = function(from, destination) {
-        console.log("byter");
-        var test = [];
-        for (var i = 0; i < from.length; i++) {
-            test.push(new CanvasButton(from[i]));
-        }
-        for (var i = 0; i < from.length; i++) {
-            test[i].deactivate();
-            console.log(test[i].active);
-        }
-        for (var i = 0; i < destination.length; i++) {
-            destination[i].active = true;
-        }
-
+    var mainScreenButtons = [squatButton, pushupButton, shoulderPressButton, bicepsCurlButton, sittupButton, dumbBellButton];
+    
+    var option1Button = new CanvasButton(0, 800, 0, 600, false);
+    var option2Button = new CanvasButton(0, 10, 0, 10, false);
+    var option3Button = new CanvasButton(0, 10, 0, 10, false);
+    var quizScreenButtons = [option1Button, option2Button, option3Button];
+    setMainScreen = function(active){
+        console.log("Ändrar main screen");
+        for(var i = 0; i < mainScreenButtons.length; i++){
+            mainScreenButtons[i].active = active;
+        } 
+    }
+    setQuizScreen = function(active){
+        console.log("Ändrar Quiz screen");
+        for(var i = 0; i < quizScreenButtons.length; i++){
+            quizScreenButtons[i].active = active;
+        } 
     }
     processClick = function(event) {
-        if (mainScreenButtons[0].checkClick(event.x, event.y)) {
-            switchScreen(mainScreenButtons, quizScreen);
-        } else {
+        var rect = canvas.getBoundingClientRect();
+        var x = event.x - rect.left;
+        var y = event.y - rect.top;
+        if(mainScreenButtons[0].active){
+            for(var i = 0; i < mainScreenButtons.length; i++){
+                
+            }
+            
+            return;
+        }
+        if(quizScreenButtons[0].active){
+            if(option1Button.checkClick(x,y)){
+                console.log("Nu i Quizzet.");
+            }
+
+
+
+            return;
+        }   
+        else {
             console.log("Inte en knapp");
         }
     }
@@ -39,12 +56,11 @@ init = function() {
     canvas.addEventListener("click", processClick);
 }
 
-//här har jack skrivit(om något ser tokigt ut!)
+//här har jack skrivit(om något går åt helvete!)
 
 function reloadGame() {
     location.reload();
 }
-
 //här slutade jack
 
 // Klasser
@@ -54,7 +70,11 @@ class CanvasButton {
         this.xEnd = xEnd;
         this.yStart = yStart;
         this.yEnd = yEnd;
-        this.active = true;
+        if(arguments.length == 4)
+            this.active = true;
+        else{
+            this.active == arguments[4];
+        }
     }
 
     checkClick(x, y) {
