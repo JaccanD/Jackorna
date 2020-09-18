@@ -136,7 +136,7 @@ init = function() {
         } else if (a != CorrectAnswer) {
             points = points - 5;
         }
-        pointCounter.innerHTML = points;
+        pointCounter.innerHTML = points + " Poäng";
     }
 
 
