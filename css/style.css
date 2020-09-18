@@ -42,3 +42,11 @@ body {
 .button:hover {
     background-color: rgb(255, 138, 255);
 }
+
+#Points {
+    display: block;
+    margin: auto;
+    width: 800px;
+    font-size: 60pt;
+    color: magenta;
+}
