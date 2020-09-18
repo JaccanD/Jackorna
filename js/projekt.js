@@ -32,10 +32,24 @@ init = function() {
         var x = event.x - rect.left;
         var y = event.y - rect.top;
         if(mainScreenButtons[0].active){
-            for(var i = 0; i < mainScreenButtons.length; i++){
-                
+            if(squatButton.checkClick(x, y)){
+
             }
-            
+            if(pushupButton.checkClick(x,y)){
+
+            }
+            if(shoulderPressButton.checkClick(x,y)){
+
+            }
+            if(bicepsCurlButton.checkClick(x,y)){
+
+            }
+            if(sittupButton.checkClick(x,y)){
+
+            }
+            if(dumbBellButton.checkClick(x,y)){
+
+            }
             return;
         }
         if(quizScreenButtons[0].active){
@@ -87,9 +101,6 @@ class CanvasButton {
             }
         }
         return false;
-    }
-    deactivate() {
-        this.active = false;
     }
 }
 class GameScreen {
