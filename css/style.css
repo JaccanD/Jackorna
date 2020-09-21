@@ -51,13 +51,3 @@ body {
     color: magenta;
 }    
     
-    
-    
-    .preload-images {
-    background: url(../pics/body_shoulder.png) no-repeat -9999px -9999px;
-	background: url(../pics/body_shoulder.png) no-repeat -9999px -9999px,
-		        url(../pics/body_biceps.png) no-repeat -9999px -9999px,
-		        url(../pics/body_pushups.png) no-repeat -9999px -9999px,
-		        url(../pics/body_crunches.png) no-repeat -9999px -9999px,
-		        url(../pics/body_shoulder.png) no-repeat -9999px -9999px;
-    }
