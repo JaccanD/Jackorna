@@ -7,6 +7,8 @@ init = function() {
     var rect = canvas.getBoundingClientRect();
     var quizBg = new Image();
     quizBg.src = "pics/Q_layout.png";
+    var bodyImg = new Image();
+    bodyImg.src = "pics/human.png";
     var pointCounter = document.getElementById("Points");
 
     var squatButton = new CanvasButton(660, 780, 350, 550);
@@ -21,6 +23,11 @@ init = function() {
     var option2Button = new CanvasButton(30, 770, 320, 410, false);
     var option3Button = new CanvasButton(30, 770, 430, 520, false);
     var quizScreenButtons = [option1Button, option2Button, option3Button];
+
+    var bodyButon1 = new CanvasButton(0, 10, 0, 10);
+    var bodyButon2 = new CanvasButton(0, 10, 0, 10);
+    var bodyButon3 = new CanvasButton(0, 10, 0, 10);
+    var bodyButtons = [bodyButon1, bodyButon2, bodyButon3];
 
     var points = 0;
     var CorrectAnswer = 0;
@@ -98,8 +105,11 @@ init = function() {
 
     function setQuiz() {
         Question = currentQuiz.questions[qNumber];
-        CorrectAnswer = 1 + Math.floor(Math.random() * 3);
-
+        if(qNumber == 1){
+            setBody();
+            return;
+        }
+        CorrectAnswer = 1 + Math.floor(Math.random() * 3)
         if (CorrectAnswer == 1) {
             Option1 = currentQuiz.answers[qNumber][0];
             Option2 = currentQuiz.answers[qNumber][1];
@@ -127,9 +137,12 @@ init = function() {
         context.fillText(Option2, 20, textpos3 + rect.top);
         context.fillText(Option3, 20, textpos4 + rect.top);
     }
-
+    function setBody(){
+        CorrectAnswer = 1;
+        context.drawImage(bodyImg, 0, 0);
+    }
     function getFeedback(a) {
-        if (currentQuiz.completed)
+        if (currentQuiz.completed || qNumber == 0)
             return;
         if (a == CorrectAnswer) {
             points = points + 10;
@@ -265,6 +278,12 @@ class CanvasButton {
             }
         }
         return false;
+    }
+    moveTo(xStart, xEnd, yStart, yEnd){
+        this.xStart = xStart;
+        this.xEnd = xEnd;
+        this.yStart = yStart;
+        this.yEnd = yEnd;
     }
 }
 class GameScreen {
