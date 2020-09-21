@@ -8,7 +8,17 @@ init = function() {
     var quizBg = new Image();
     quizBg.src = "pics/Q_layout.png";
     var bodyImg = new Image();
-    bodyImg.src = "pics/Kroppen.png";
+    bodyImg.src = "pics/human.png"
+    var bicepsImage = new Image();
+    bicepsImage.src = "pics/body_biceps.png";
+    var crunchesImage = new Image();
+    crunchesImage.src = "pics/body_crunches.png";
+    var pushupsImage = new Image();
+    pushupsImage.src = "pics/body_pushups.png";
+    var shoulderImage = new Image();
+    shoulderImage.src = "pics/body_shoulder.png";
+    var squatsImage = new Image();
+    squatsImage.src = "pics/body_squats.png";
     var pointCounter = document.getElementById("Points");
 
     var squatButton = new CanvasButton(660, 780, 350, 550);
@@ -138,8 +148,10 @@ init = function() {
         context.fillText(Option3, 20, textpos4 + rect.top);
     }
     function setBody(){
+        console.log(currentQuiz.muscleGroup);
+        console.log(pushupsQuiz.muscleGroup);
+        moveBodyButtons();
         CorrectAnswer = 1;
-        context.drawImage(bodyImg, 200, 0);
 
         context.font = "18pt Times new roman, Serif";
         var lines = getLines(Question, 500);
@@ -148,22 +160,25 @@ init = function() {
             context.fillText(lines[i], 25, textpos1 + rect.top + lineOffset);
             lineOffset += 20;
         }
-        moveBodyButtons();
+
+        context.drawImage(bodyImg, 200, 0);
+
     }
     function moveBodyButtons(){
         if(currentQuiz.muscleGroup == pushupsQuiz.muscleGroup){
-
+            bodyImg.src = images[0];
         }else if(currentQuiz.muscleGroup == crunchesQuiz.muscleGroup){
-
+            bodyImg = crunchesImage;
         }else if(currentQuiz.muscleGroup == squatsQuiz.muscleGroup){
-
+            bodyImg.src = "pics/body_squats.png";
         }else if(currentQuiz.muscleGroup == shoulderpressQuiz.muscleGroup){
-
+            bodyImg.src = "pics/body_shoulder.png";
         }else if(currentQuiz.muscleGroup == curlsQuiz.muscleGroup){
-
+            bodyImg.src = "pics/body_biceps.png"
         }else if(currentQuiz.muscleGroup == dumbbellQuiz.muscleGroup){
 
         }
+
     }
     function getFeedback(a) {
         if (currentQuiz.completed || qNumber == 0)
@@ -271,8 +286,16 @@ init = function() {
             console.log("Inte en knapp");
         }
     }
+    preloadImages = function(){
+        console.log(preloadImages.arguments.length);
+        for(var i = 0; i < preloadImages.arguments.length; i++);{
+            console.log(preloadImages.arguments[i]);
+            images[i] = new Image();
+            //images[i].src = preloadImages.arguments[i];
+        }
+    }
 
-    // Kod som körs
+    console.log("Lets GO!");
     canvas.addEventListener("click", processClick);
 }
 
@@ -324,6 +347,7 @@ class Quiz {
     constructor(questions, answers, muscleGroup) {
         this.questions = questions;
         this.answers = answers;
+        this.muscleGroup = muscleGroup;
         this.completed = false;
     }
 }
