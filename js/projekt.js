@@ -9,8 +9,8 @@ init = function() {
     quizBg.src = "pics/Q_layout.png";
     var bodyImg = new Image();
     bodyImg.src = "pics/human.png";
-    var fireworks = new Image();
-    fireworks.src = "pics/fireworks.png";
+    var FMJ = new Image();
+    FMJ.src = "pics/FMJ.png";
 
     // Ska inte behövas men javascript gonna javascript
     var bicepsImage = new Image();
@@ -256,7 +256,7 @@ init = function() {
         context.clearRect(0, 0, canvas.width, canvas.height);
     }
     drawEndScreen = function() {
-        context.drawImage(fireworks, 0, 0);
+        context.drawImage(FMJ, 0, 0);
     } // JACK
 
     function startQuiz(toStart) {
