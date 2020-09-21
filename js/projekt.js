@@ -23,6 +23,8 @@ init = function() {
     shoulderImage.src = "pics/body_shoulder.png";
     var squatsImage = new Image();
     squatsImage.src = "pics/body_squats.png";
+    var dbImage = new Image();
+    dbImage.src = "pics/DB.png";
     
     var pointCounter = document.getElementById("Points");
     var squatButton = new CanvasButton(660, 780, 350, 550);
@@ -96,10 +98,9 @@ init = function() {
     ];
     var shoulderpressQuiz = new Quiz(shoulderpress, shoulderpressAnswer, "Shoulders");
     quizArray.push(shoulderpressQuiz);
-    var dumbbell = ["En dumbbell är ett träningsredskap som man kan använda i många olika övningar. Här är kreativiteten det enda som stoppar en från att träna. Den kan även bytas ut mot till exempel en hink med vatten. Utför aldrig några övningar som du tycker känns obekvämt eller gör ont. Du kan söka upp övningar för att få lite idéer på vad som passar just din träning.", "klicka på kroppen för att gå vidare", "Vad kallas detta träningsredskap?"];
+    var dumbbell = ["En dumbbell är ett träningsredskap som man kan använda i många olika övningar. Här är kreativiteten det enda som stoppar en från att träna. Den kan även bytas ut mot till exempel en hink med vatten. Utför aldrig några övningar som du tycker känns obekvämt eller gör ont. Du kan söka upp övningar för att få lite idéer på vad som passar just din träning.", "Vad kallas detta träningsredskap?"];
     var dumbbellAnswer = [
         ["Wow!", "Fantastiskt", "Detta ska jag komma ihåg"],
-        ["1", "2", "3"],
         ["Dumbbell", "Barbell", "Klot med handtag"]
     ];
     var dumbbellQuiz = new Quiz(dumbbell, dumbbellAnswer, "Dumbbell");
@@ -126,7 +127,7 @@ init = function() {
 
     function setQuiz() {
         Question = currentQuiz.questions[qNumber];
-        if(qNumber == 1){
+        if(qNumber == 1 && currentQuiz.muscleGroup != "Dumbbell"){
             setBody();
         }
         CorrectAnswer = 1 + Math.floor(Math.random() * 3)
@@ -184,7 +185,7 @@ init = function() {
         }else if(currentQuiz.muscleGroup == curlsQuiz.muscleGroup){
             bodyImg = bicepsImage;
         }else if(currentQuiz.muscleGroup == dumbbellQuiz.muscleGroup){
-
+            bodyImg = dbImage;
         }
 
     }
