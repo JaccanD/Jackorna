@@ -8,7 +8,7 @@ init = function() {
     var quizBg = new Image();
     quizBg.src = "pics/Q_layout.png";
     var bodyImg = new Image();
-    bodyImg.src = "pics/human.png";
+    bodyImg.src = "pics/Kroppen.png";
     var pointCounter = document.getElementById("Points");
 
     var squatButton = new CanvasButton(660, 780, 350, 550);
@@ -24,9 +24,9 @@ init = function() {
     var option3Button = new CanvasButton(30, 770, 430, 520, false);
     var quizScreenButtons = [option1Button, option2Button, option3Button];
 
-    var bodyButon1 = new CanvasButton(0, 10, 0, 10);
-    var bodyButon2 = new CanvasButton(0, 10, 0, 10);
-    var bodyButon3 = new CanvasButton(0, 10, 0, 10);
+    var bodyButon1 = new CanvasButton(0, 10, 0, 10, false);
+    var bodyButon2 = new CanvasButton(0, 10, 0, 10, false);
+    var bodyButon3 = new CanvasButton(0, 10, 0, 10, false);
     var bodyButtons = [bodyButon1, bodyButon2, bodyButon3];
 
     var points = 0;
@@ -47,42 +47,42 @@ init = function() {
         ["Här ska man klicka på kroppen", "Här ska man inte klicka på kroppen", "Här ska man inte klicka på kroppen"],
         ["Push-ups", "Sit-ups", "chin-ups"]
     ];
-    var pushupsQuiz = new Quiz(pushups, pushupsAnswer);
+    var pushupsQuiz = new Quiz(pushups, pushupsAnswer, "Breast");
     var curls = ["Ha en vikt/vikter i händerna och låt armbågarna peka mot tårna samtidigt som du böjer armarna och för vikten upp mot bröskorgen. Att tänka på: Var rak i ryggen och försök att inte gunga så mycket med överkroppen för att maximera styrketräningen.", "Vilken del av kroppen har du precis tränat?", "Du gissade rätt. Vad är det latinska namnet för biceps?"];
     var curlsAnswer = [
         ["OK", " ok..", "Inte ok"],
         ["Här ska man klicka på kroppen", "Här ska man inte klicka på kroppen", "Här ska man inte klicka på kroppen"],
         ["musculus biceps brachii", "musculus bicepius", "musculus brachii"]
     ];
-    var curlsQuiz = new Quiz(curls, curlsAnswer);
+    var curlsQuiz = new Quiz(curls, curlsAnswer, "Arms");
     var squats = ["Ställ dig med fötterna pekandes framåt i axelbredd. Böj sedan på benen samtidigt som du håller ryggen rak. Gå så djupt som din rörlighet tillåter och ställ dig sedan rakt upp igen. Att tänka på: Försök att hålla axlarna i en vertikal linje med hälarna för att maximera din styrketräning och undvika skador. Om det känns som att du ska ramla bakåt kan det hjälpa att sträcka ut armarna rakt fram för att hålla balansen.", "Vilken del av kroppen har du precis tränat?", "Du gissade rätt. Vad är det latinska namnet för sätesmuskel?"];
     var squatsAnswer = [
         ["OK", " ok..", "Inte ok"],
         ["Här ska man klicka på kroppen", "Här ska man inte klicka på kroppen", "Här ska man inte klicka på kroppen"],
         ["Gluteus maximus", "Gluteus backius", "Musculus backius"]
     ];
-    var squatsQuiz = new Quiz(squats, squatsAnswer);
+    var squatsQuiz = new Quiz(squats, squatsAnswer, "Legs");
     var crunches = ["Denna övning utförs ryggliggandes. lyft upp benen och håll dessa i en 90 graders vinkel. Försök sedan att röra huvudet mot knäna genom att böja på magen utan att lyfta ländryggen från backen. Utför detta upprepade gånger för effekt. Att tänka på: Försök att utföra övningen lugnt och kontrollerat och inte snabbt och ryckigt.", "Vilken del av kroppen har du precis tränat?", "Du gissade rätt. Visste du att det är skillnad på sit-ups och crunches? Sit-ups tränar höftböjarna mer än magen och sker när du går från ryggliggandes till sittandes på rumpan.Crunches fokuserar mer på magmusklerna och utförs korrekt om du är ryggliggande och rör dig mot sittande utan att ländryggen lämnar golvet och sedan återgår till ryggliggande när du inte kommer längre upp."];
     var crunchesAnswer = [
         ["OK", " ok..", "Inte ok"],
         ["Här ska man klicka på kroppen", "Här ska man inte klicka på kroppen", "Här ska man inte klicka på kroppen"],
         ["crunches har mer fokus på mage", "Det är samma sak", "sit-ups har mer fokus på mage"]
     ];
-    var crunchesQuiz = new Quiz(crunches, crunchesAnswer);
+    var crunchesQuiz = new Quiz(crunches, crunchesAnswer, "Abs");
     var shoulderpress = ["Denna övning kan utföras sittandes eller stående. Ta en vikt/två vikter i dina händer och se till att din överkropp är i rakt vertikalt läge. Vikterna som du har i händerna ska sedan lyftas rakt upp ovanför dina axlar. När du sträckt upp vikterna så högt du kan för du sedan ner dom mot nyckelbenen och upprepar processen. Att tänka på: Var hela tiden rak i överkroppen och försök att putta ut bröstet utan att svanka med ryggen. bibehåll denna form under hela övningen.", "Vilken del av kroppen har du precis tränat?", "Du gissade rätt. Vad är viktigt att tänka på när man utför axelpress för att undvika skador?"];
     var shoulderpressAnswer = [
         ["OK", " ok..", "Inte ok"],
         ["Här ska man klicka på kroppen", "Här ska man inte klicka på kroppen", "Här ska man inte klicka på kroppen"],
         ["Spänna bålen", "Släppa ned vikten i golvet från axelhöjd när du är klar", "Att andra som ser dig tycker du ser stark ut"]
     ];
-    var shoulderpressQuiz = new Quiz(shoulderpress, shoulderpressAnswer);
+    var shoulderpressQuiz = new Quiz(shoulderpress, shoulderpressAnswer, "Shoulders");
     var dumbbell = ["En dumbbell är ett träningsredskap som man kan använda i många olika övningar. Här är kreativiteten det enda som stoppar en från att träna. Den kan även bytas ut mot till exempel en hink med vatten. Att tänka på: Utför inga övningar som du tycker känns obekvämt eller gör ont. Det kan vara smart att söka upp övningar för att få lite idéer på vad som passar just din träning.", "klicka på kroppen för at gå vidare", "Vad kallas detta träningsredskap?"];
     var dumbbellAnswer = [
         ["OK", " ok..", "Inte ok"],
         ["Här ska man klicka på kroppen", "Här ska man inte klicka på kroppen", "Här ska man inte klicka på kroppen"],
         ["Dumbbell", "Barbell", "Klot med handtag"]
     ];
-    var dumbbellQuiz = new Quiz(dumbbell, dumbbellAnswer);
+    var dumbbellQuiz = new Quiz(dumbbell, dumbbellAnswer, "Dumbbell");
 
     function getLines(text, maxWidth) {
         var words = text.split(" ");
@@ -139,7 +139,31 @@ init = function() {
     }
     function setBody(){
         CorrectAnswer = 1;
-        context.drawImage(bodyImg, 0, 0);
+        context.drawImage(bodyImg, 200, 0);
+
+        context.font = "18pt Times new roman, Serif";
+        var lines = getLines(Question, 500);
+        var lineOffset = 0;
+        for (var i = 0; i < lines.length; i++) {
+            context.fillText(lines[i], 25, textpos1 + rect.top + lineOffset);
+            lineOffset += 20;
+        }
+        moveBodyButtons();
+    }
+    function moveBodyButtons(){
+        if(currentQuiz.muscleGroup == pushupsQuiz.muscleGroup){
+
+        }else if(currentQuiz.muscleGroup == crunchesQuiz.muscleGroup){
+
+        }else if(currentQuiz.muscleGroup == squatsQuiz.muscleGroup){
+
+        }else if(currentQuiz.muscleGroup == shoulderpressQuiz.muscleGroup){
+
+        }else if(currentQuiz.muscleGroup == curlsQuiz.muscleGroup){
+
+        }else if(currentQuiz.muscleGroup == dumbbellQuiz.muscleGroup){
+
+        }
     }
     function getFeedback(a) {
         if (currentQuiz.completed || qNumber == 0)
@@ -180,6 +204,11 @@ init = function() {
     setQuizScreen = function(active) {
         for (var i = 0; i < quizScreenButtons.length; i++) {
             quizScreenButtons[i].active = active;
+        }
+    }
+    setBodyScreen = function(active){
+        for (var i = 0; i < bodyButtons.length; i++) {
+            bodyButtons[i].active = active;
         }
     }
     drawQuizScreen = function() {
@@ -292,7 +321,7 @@ class GameScreen {
     }
 }
 class Quiz {
-    constructor(questions, answers) {
+    constructor(questions, answers, muscleGroup) {
         this.questions = questions;
         this.answers = answers;
         this.completed = false;
