@@ -127,7 +127,7 @@ init = function() {
 
     function setQuiz() {
         Question = currentQuiz.questions[qNumber];
-        if(qNumber == 1 && currentQuiz.muscleGroup != "Dumbbell"){
+        if(qNumber == 1){
             setBody();
         }
         CorrectAnswer = 1 + Math.floor(Math.random() * 3)
@@ -170,7 +170,7 @@ init = function() {
             lineOffset += 20;
         }
 
-        context.drawImage(bodyImg, 200, 0);
+
 
     }
     function moveBodyButtons(){
@@ -184,8 +184,13 @@ init = function() {
             bodyImg = shoulderImage;
         }else if(currentQuiz.muscleGroup == curlsQuiz.muscleGroup){
             bodyImg = bicepsImage;
-        }else if(currentQuiz.muscleGroup == dumbbellQuiz.muscleGroup){
+        }
+        if(currentQuiz.muscleGroup == dumbbellQuiz.muscleGroup){
             bodyImg = dbImage;
+            context.drawImage(bodyImg, 0, 0);
+        }
+        else{
+            context.drawImage(bodyImg, 200, 0);
         }
 
     }
