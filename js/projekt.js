@@ -1,7 +1,7 @@
+// Jacob Didenbäck Jack Noaksson
 init = function() {
-    // Variabler och Funktioner
+    // Variabler
 
-    //JAcks mongolista
     var canvas = document.getElementById('mainCanvas');
     var context = canvas.getContext('2d');
     var rect = canvas.getBoundingClientRect();
@@ -106,6 +106,11 @@ init = function() {
     var dumbbellQuiz = new Quiz(dumbbell, dumbbellAnswer, "Dumbbell");
     quizArray.push(dumbbellQuiz);
 
+    // Funktioner
+
+    // Delar upp texten i rader som inte överskrider 
+    // maxWidth parametern.
+    // returnerar en array av strings
     function getLines(text, maxWidth) {
         var words = text.split(" ");
         var lines = [];
@@ -124,7 +129,9 @@ init = function() {
         lines.push(currentLine);
         return lines;
     }
-
+    // Skriver ut texten till nästa fråga och skriver ut 
+    // alternativen till frågan i rutorna i en slumpmässig 
+    // ordning
     function setQuiz() {
         Question = currentQuiz.questions[qNumber];
         if(qNumber == 1){
@@ -150,6 +157,7 @@ init = function() {
         context.font = "18pt Times new roman, Serif";
         var lines = getLines(Question, 700);
         var lineOffset = 0;
+        // Skriver utt de rader som getLines har returnerat
         for (var i = 0; i < lines.length; i++) {
             context.fillText(lines[i], 25, textpos1 + rect.top + lineOffset);
             lineOffset += 20;
@@ -158,8 +166,9 @@ init = function() {
         context.fillText(Option2, 20, textpos3 + rect.top);
         context.fillText(Option3, 20, textpos4 + rect.top);
     }
+    // Ritar ut kroppsbilden och skriver ut frågetexten
     function setBody(){
-        moveBodyButtons();
+        drawBodyImg();
         CorrectAnswer = 1;
 
         context.font = "18pt Times new roman, Serif";
@@ -173,7 +182,9 @@ init = function() {
 
 
     }
-    function moveBodyButtons(){
+    // Laddar in rätt bild i bodyImg för det aktiva quizzet 
+    // och ritar sedan bilden på kanvasen
+    function drawBodyImg(){
         if(currentQuiz.muscleGroup == pushupsQuiz.muscleGroup){
             bodyImg = pushupsImage;
         }else if(currentQuiz.muscleGroup == crunchesQuiz.muscleGroup){
@@ -194,6 +205,9 @@ init = function() {
         }
 
     }
+    // Kontrollerar om svaret är rätt och ger
+    // poäng om svaret är rätt och ger -poäng om 
+    // svaret är fel
     function getFeedback(a) {
         if (currentQuiz.completed || qNumber == 0)
             return;
@@ -205,10 +219,10 @@ init = function() {
         pointCounter.innerHTML = points + " Poäng";
     }
 
-
-    //SLUT
-
-
+    // Går vidare till nästa fråga
+    // om det inte finns en till fråga i det 
+    // aktiva quizzet så slutförs quizzet och
+    // huvud skärmen visas igen
     advanceQuiz = function(a) {
         getFeedback(a);
         qNumber++;
@@ -220,9 +234,9 @@ init = function() {
             clearCanvas();
             currentQuiz.completed = true;
             if(checkCompletion()){
-                clearCanvas();// JACK
+                clearCanvas();
                 console.log("Nu e du klar");
-                drawEndScreen(); // JACK
+                drawEndScreen(); 
             }
             qNumber = 0;
             currentQuiz = null;
@@ -230,6 +244,8 @@ init = function() {
             setQuizScreen(false);
         }
     }
+    // Kollar om alla quiz är klara
+    // i vilket fall betyder det att spelet är klart
     checkCompletion = function(){
         for(var i = 0; i < quizArray.length; i++){
             console.log("varv");
@@ -239,16 +255,19 @@ init = function() {
         }
         return true;
     }
+    // Ändrar alla mainScreenButtons .active till värdet som ges i parametern (stänger av eller på knapparna med true eller false)
     setMainScreen = function(active) {
         for (var i = 0; i < mainScreenButtons.length; i++) {
             mainScreenButtons[i].active = active;
         }
     }
+    // --||--
     setQuizScreen = function(active) {
         for (var i = 0; i < quizScreenButtons.length; i++) {
             quizScreenButtons[i].active = active;
         }
     }
+    // --||--
     setBodyScreen = function(active){
         for (var i = 0; i < bodyButtons.length; i++) {
             bodyButtons[i].active = active;
@@ -263,8 +282,10 @@ init = function() {
     }
     drawEndScreen = function() {
         context.drawImage(FMJ, 0, 0);
-    } // JACK
+    }  
 
+    // Byter skärm till quizskärmen
+    // och startar ett quiz
     function startQuiz(toStart) {
         drawQuizScreen();
         setMainScreen(false);
@@ -273,7 +294,12 @@ init = function() {
         setQuiz();
     }
 
-
+    // Lyssnar på click event på canvasen
+    // Gör först om x och y så att dom är
+    // relativa till canvasen och inte fönstret. 
+    // går sedan igenom varje knapp som är aktiv
+    // och kollar om kordinaterna för klicket 
+    // är lika med knappens kordinater
     processClick = function(event) {
         var x = event.x - rect.left;
         var y = event.y - rect.top;
@@ -337,14 +363,15 @@ init = function() {
     canvas.addEventListener("click", processClick);
 }
 
-//här har jack skrivit(om något går åt helvete!)
-
+//Laddar om hemsidan
 function reloadGame() {
     location.reload();
 }
-//här slutade jack
 
-// Klasser
+// Klasser¨
+// En klass för att definera en knapp på canvasen
+// Gör det lättare att kolla om användaren har tryckt på den
+// Går också att flytta på knappen och att stänga av den
 class CanvasButton {
     constructor(xStart, xEnd, yStart, yEnd) {
         this.xStart = xStart;
@@ -376,11 +403,7 @@ class CanvasButton {
         this.yEnd = yEnd;
     }
 }
-class GameScreen {
-    constructor(buttons) {
-        this.buttons = buttons;
-    }
-}
+//En klass för att hålla ihop frågor och svaren till frågorna
 class Quiz {
     constructor(questions, answers, muscleGroup) {
         this.questions = questions;

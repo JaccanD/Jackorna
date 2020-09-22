@@ -1,5 +1,6 @@
 /*Jack Noaksson, Jano6161; Jacob Didenbäck, jadi4034*/
 
+/*ger canvasen en rosa outline samt sätter vår egenskapade gymbild till bakgrund i canvasen*/
 #mainCanvas {
     border: 2px solid magenta;
     background-image: url("../pics/projektbild.png");
@@ -7,10 +8,12 @@
     background-size: cover;
 }
 
+/*sätter färg på bakgrunden på hemsidan*/
 body { 
  background-color: rgb(26, 26, 26);
 }
 
+/*ger vår titel på siden en häftig skuggeffekt som lyser lite samt ändrar font, fontstorlek och centrerar texten*/
 #intro {
     text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(240, 98, 233), 0 0 5px rgba(240, 98, 233), 0 1px 3px rgba(240, 98, 233), 0 3px 5px rgba(240, 98, 233), 0 5px 10px rgba(240, 98, 233), 0 10px 10px rgba(240, 98, 233), 0 20px 20px rgb(240, 98, 233);
     color: #000000;
@@ -19,6 +22,7 @@ body {
     text-align: center;
 }
 
+/*bestämmer hur stor "starta om"-knappen ska vara samt vilken färg den har. sätter även tid på transition mellan läget när musen inte är över och när den är det*/
 #restartButton {
     padding: 20px;
     margin-top: 10px;
@@ -33,16 +37,19 @@ body {
     font-family: cursive;
 }
 
+/*detta är en div som vi placerar i mitten på hemsidan. Canvasen ligger i denna och lägger sig alltså i mitten även den*/
 #canvas-container {
     display: block;
     width: 800px;
     margin: auto;
 }
 
+/*här skapas hoverfunktionen på "starta om"-knappen samt vilken bakgrundfärg den ska ha.*/
 .button:hover {
     background-color: rgb(255, 138, 255);
 }
 
+/*typsnitt på poängräknaren samt placering på hemsidan*/
 #Points {
     display: block;
     margin: auto;
@@ -50,19 +57,22 @@ body {
     font-size: 60pt;
     color: magenta;
 }    
-    
+
+/*sätter typsnittsstorlek, typsnitt och färg på rubriken "Instruktioner"*/
 #H2P {
     font-size: 60pt;
     color: #bebebe;
     font-family: fantasy;
 }
 
+/*Detta hör till en section som vi placerat rakt under canvasen. Skapar ett blockelement så vi kan placera den centralt på hemsidan.*/
 #instruktioner {
     display: block;
     width: 800px;
     margin: auto;
 }
 
+/*sätter färg och storlek på våra instruktioner*/
 #punktlista {
     color: #bebebe;
     font-size: 24pt;
