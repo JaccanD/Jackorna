@@ -25,6 +25,18 @@ init = function() {
     squatsImage.src = "pics/body_squats.png";
     var dbImage = new Image();
     dbImage.src = "pics/DB.png";
+
+    var gifHolder = document.getElementById("gifImg");
+    // Gifs förhoppningsvis
+    var bicepGif = new Image();
+
+    var crunchesGif = new Image();
+
+    var pushupGif = new Image();
+    pushupGif.src = "pics/pushUpGif.gif";
+    var shoulderGif = new Image();
+
+    var squatsGif = new Image();
     
     var pointCounter = document.getElementById("Points");
     var squatButton = new CanvasButton(660, 780, 350, 550);
@@ -38,7 +50,7 @@ init = function() {
     var option1Button = new CanvasButton(30, 770, 200, 300, false);
     var option2Button = new CanvasButton(30, 770, 320, 410, false);
     var option3Button = new CanvasButton(30, 770, 430, 520, false);
-    var quizScreenButtons = [option1Button, option2Button, option3Button];
+    var quizScreenButtons = [option1Button,option2Button, option3Button];
 
     var bodyButon1 = new CanvasButton(0, 100, 0, 100, false);
     var bodyButon2 = new CanvasButton(0, 100, 0, 100, false);
@@ -58,7 +70,7 @@ init = function() {
     var textpos3 = 210;
     var textpos4 = 320;
     var quizArray = new Array();
-    var pushups = ["Sätt ner händerna i backen och flytta bak fötterna. Ner och nudda näsan i golvet och kom sedan upp till raka armar. Ge mig 10 repetitioner! NU! sätt händerna närmare varandra för att öka belastningen på bröstmusklerna.", "Vilken del av kroppen har du precis tränat?", "Du gissade rätt. Vad är det korrekta namnet på övningen du precis utförde?"];
+    var pushups = ["Sätt ner händerna i backen och flytta bak fötterna. Ner och nudda näsan i golvet och kom sedan upp till raka armar. Ge mig 10 repetitioner! NU! sätt händerna närmare varandra för att öka belastningen på bröstmusklerna.", "Vilken del av kroppen har du precis tränat?", "Vad är det korrekta namnet på övningen du precis utförde?"];
     var pushupsAnswer = [
         ["Utför övningen och klicka sedan HÄR!", "Utför övningen och klicka sedan HÄR!", "Utför övningen och klicka sedan HÄR!"],
         ["1", "2", "3"],
@@ -66,7 +78,7 @@ init = function() {
     ];
     var pushupsQuiz = new Quiz(pushups, pushupsAnswer, "Breast");
     quizArray.push(pushupsQuiz);
-    var curls = ["Ta en vikt/vikter i händerna och låt armbågarna peka mot tårna samtidigt som du böjer armarna och för vikten upp mot bröstkorgen svagis. Var rak i ryggen och ge tusan i att inte gunga så mycket med överkroppen för att maximera styrketräningen. KÖR!", "Vilken del av kroppen har du precis tränat?", "Du gissade rätt. Vad är det latinska namnet för biceps?"];
+    var curls = ["Ta en vikt/vikter i händerna och låt armbågarna peka mot tårna samtidigt som du böjer armarna och för vikten upp mot bröstkorgen svagis. Var rak i ryggen och ge tusan i att inte gunga så mycket med överkroppen för att maximera styrketräningen. KÖR!", "Vilken del av kroppen har du precis tränat?", "Vad är det latinska namnet för biceps?"];
     var curlsAnswer = [
         ["Utför övningen och klicka sedan HÄR!", "Utför övningen och klicka sedan HÄR!", "Utför övningen och klicka sedan HÄR!"],
         ["1", "2", "3"],
@@ -74,7 +86,7 @@ init = function() {
     ];
     var curlsQuiz = new Quiz(curls, curlsAnswer, "Arms");
     quizArray.push(curlsQuiz);
-    var squats = ["Ställ dig med fötterna axelbrett och böj på benen! Gå ner djupt och upp till nästan raka ben igen. Böj inte på ryggen, gröngöling! Axlarna ska vara i linje rakt ovanför hälarna hela tiden. Använd armarna för att hjälpa till med balansen. 10 repetitioner… NU!!", "Vilken del av kroppen har du precis tränat?", "Du gissade rätt. Vad är det latinska namnet för sätesmuskel?"];
+    var squats = ["Ställ dig med fötterna axelbrett och böj på benen! Gå ner djupt och upp till nästan raka ben igen. Böj inte på ryggen, gröngöling! Axlarna ska vara i linje rakt ovanför hälarna hela tiden. Använd armarna för att hjälpa till med balansen. 10 repetitioner… NU!!", "Vilken del av kroppen har du precis tränat?", "Vad är det latinska namnet för sätesmuskel?"];
     var squatsAnswer = [
         ["Utför övningen och klicka sedan HÄR!", "Utför övningen och klicka sedan HÄR!", "Utför övningen och klicka sedan HÄR!"],
         ["2", "1", "3"],
@@ -82,7 +94,7 @@ init = function() {
     ];
     var squatsQuiz = new Quiz(squats, squatsAnswer, "Legs");
     quizArray.push(squatsQuiz);
-    var crunches = ["Ner i ryggliggandes. Lyft upp benen och håll dessa i en 90 graders vinkel. För huvudet mot knäna genom att böja på magen utan att lyfta ländryggen från backen. minst 10 repetitioner!! klara, färdiga KÖR!!", "Vilken del av kroppen har du precis tränat?", "Du gissade rätt. Visste du att det är skillnad på sit-ups och crunches? Sit-ups tränar höftböjarna mer än magen och sker när du går från ryggliggandes till sittandes på rumpan.Crunches fokuserar mer på magmusklerna och utförs korrekt om du är ryggliggande och rör dig mot sittande utan att ländryggen lämnar golvet och sedan återgår till ryggliggande när du inte kommer längre upp."];
+    var crunches = ["Ner i ryggliggandes. Lyft upp benen och håll dessa i en 90 graders vinkel. För huvudet mot knäna genom att böja på magen utan att lyfta ländryggen från backen. minst 10 repetitioner!! klara, färdiga KÖR!!", "Vilken del av kroppen har du precis tränat?", "Visste du att det är skillnad på sit-ups och crunches? Sit-ups tränar höftböjarna mer än magen och sker när du går från ryggliggandes till sittandes på rumpan.Crunches fokuserar mer på magmusklerna och utförs korrekt om du är ryggliggande och rör dig mot sittande utan att ländryggen lämnar golvet och sedan återgår till ryggliggande när du inte kommer längre upp."];
     var crunchesAnswer = [
         ["Utför övningen och klicka sedan HÄR!", "Utför övningen och klicka sedan HÄR!", "Utför övningen och klicka sedan HÄR!"],
         ["2", "1", "3"],
@@ -90,7 +102,7 @@ init = function() {
     ];
     var crunchesQuiz = new Quiz(crunches, crunchesAnswer, "Abs");
     quizArray.push(crunchesQuiz);
-    var shoulderpress = ["Ta en vikt/två vikter i dina händer och se till att din överkropp är i rakt vertikalt läge. Vikterna ska du lyfta upp högt. Ut med bröstet och spänn skinkorna. När du sträckt upp vikterna så högt du kan tar du ner dom mot nyckelbenen och upprepar processen. 6 repetitioner. 3..2..1.. LETS GO!!", "Vilken del av kroppen har du precis tränat?", "Du gissade rätt. Vad är viktigt att tänka på när man utför axelpress för att undvika skador?"];
+    var shoulderpress = ["Ta en vikt/två vikter i dina händer och se till att din överkropp är i rakt vertikalt läge. Vikterna ska du lyfta upp högt. Ut med bröstet och spänn skinkorna. När du sträckt upp vikterna så högt du kan tar du ner dom mot nyckelbenen och upprepar processen. 6 repetitioner. 3..2..1.. LETS GO!!", "Vilken del av kroppen har du precis tränat?", "Vad är viktigt att tänka på när man utför axelpress för att undvika skador?"];
     var shoulderpressAnswer = [
         ["Utför övningen och klicka sedan HÄR!", "Utför övningen och klicka sedan HÄR!", "Utför övningen och klicka sedan HÄR!"],
         ["1", "2", "3"],
@@ -133,6 +145,7 @@ init = function() {
     // alternativen till frågan i rutorna i en slumpmässig 
     // ordning
     function setQuiz() {
+        gifHolder.src = pushupGif.src;
         Question = currentQuiz.questions[qNumber];
         if(qNumber == 1){
             setBody();
@@ -165,6 +178,19 @@ init = function() {
         context.fillText(Option1, 20, textpos2 + rect.top);
         context.fillText(Option2, 20, textpos3 + rect.top);
         context.fillText(Option3, 20, textpos4 + rect.top);
+    }
+    function setGif(){
+        if(currentQuiz.muscleGroup == pushupsQuiz.muscleGroup){
+            gifHolder.src = pushupGif.src;
+        }else if(currentQuiz.muscleGroup == crunchesQuiz.muscleGroup){
+            gifHolder.src = "";
+        }else if(currentQuiz.muscleGroup == squatsQuiz.muscleGroup){
+            gifHolder.src = "";
+        }else if(currentQuiz.muscleGroup == shoulderpressQuiz.muscleGroup){
+            gifHolder.src = "";
+        }else if(currentQuiz.muscleGroup == curlsQuiz.muscleGroup){
+            gifHolder.src = "";
+        }
     }
     // Ritar ut kroppsbilden och skriver ut frågetexten
     function setBody(){

@@ -77,3 +77,10 @@ body {
     color: #bebebe;
     font-size: 24pt;
 }
+
+#GifContainer {
+    display: inline-block;
+    position: absolute;
+    right: 100px;
+    top: 150px;
+}
