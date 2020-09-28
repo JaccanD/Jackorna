@@ -29,15 +29,16 @@ init = function() {
     var gifHolder = document.getElementById("gifImg");
     // Gifs förhoppningsvis
     var bicepGif = new Image();
-
+    bicepGif.src = "pics/curls.gif";
     var crunchesGif = new Image();
-
+    crunchesGif.src = "pics/crunches.gif"
     var pushupGif = new Image();
     pushupGif.src = "pics/pushUpGif.gif";
     var shoulderGif = new Image();
-
+    shoulderGif.src = "pics/press.gif";
     var squatsGif = new Image();
-    
+    squatsGif.src = "pics/squats.gif";
+
     var pointCounter = document.getElementById("Points");
     var squatButton = new CanvasButton(660, 780, 350, 550);
     var pushupButton = new CanvasButton(375, 530, 470, 550);
@@ -145,7 +146,8 @@ init = function() {
     // alternativen till frågan i rutorna i en slumpmässig 
     // ordning
     function setQuiz() {
-        gifHolder.src = pushupGif.src;
+        if(qNumber == 0)
+            setGif();
         Question = currentQuiz.questions[qNumber];
         if(qNumber == 1){
             setBody();
@@ -180,16 +182,21 @@ init = function() {
         context.fillText(Option3, 20, textpos4 + rect.top);
     }
     function setGif(){
+
         if(currentQuiz.muscleGroup == pushupsQuiz.muscleGroup){
             gifHolder.src = pushupGif.src;
         }else if(currentQuiz.muscleGroup == crunchesQuiz.muscleGroup){
-            gifHolder.src = "";
+            gifHolder.src = crunchesGif.src;
         }else if(currentQuiz.muscleGroup == squatsQuiz.muscleGroup){
-            gifHolder.src = "";
+            gifHolder.src = squatsGif.src;
         }else if(currentQuiz.muscleGroup == shoulderpressQuiz.muscleGroup){
-            gifHolder.src = "";
+            gifHolder.src = shoulderGif.src;
         }else if(currentQuiz.muscleGroup == curlsQuiz.muscleGroup){
-            gifHolder.src = "";
+            gifHolder.src = bicepGif.src;
+        }
+
+        if(currentQuiz.muscleGroup != "Dumbbell"){
+            gifHolder.style.visibility = "visible";
         }
     }
     // Ritar ut kroppsbilden och skriver ut frågetexten
@@ -204,8 +211,6 @@ init = function() {
             context.fillText(lines[i], 25, textpos1 + rect.top + lineOffset);
             lineOffset += 20;
         }
-
-
 
     }
     // Laddar in rätt bild i bodyImg för det aktiva quizzet 
@@ -266,6 +271,8 @@ init = function() {
             }
             qNumber = 0;
             currentQuiz = null;
+            gifHolder.src = "";
+            gifHolder.style.visibility = "hidden";
             setMainScreen(true);
             setQuizScreen(false);
         }

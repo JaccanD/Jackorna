@@ -80,7 +80,8 @@ body {
 
 #GifContainer {
     display: inline-block;
+    visibility: hidden;
     position: absolute;
-    right: 100px;
-    top: 150px;
+    right: 5%;
+    top: 17%;
 }
