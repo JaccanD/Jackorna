@@ -12,7 +12,7 @@ init = function() {
     var FMJ = new Image();
     FMJ.src = "pics/FMJ.png";
 
-    // Ska inte behövas men javascript gonna javascript
+    // Ska inte behöva göra så här men javascript gonna javascript
     var bicepsImage = new Image();
     bicepsImage.src = "pics/body_biceps.png";
     var crunchesImage = new Image();
@@ -27,7 +27,7 @@ init = function() {
     dbImage.src = "pics/DB.png";
 
     var gifHolder = document.getElementById("gifImg");
-    // Gifs förhoppningsvis
+    // Gifs
     var bicepGif = new Image();
     bicepGif.src = "pics/curls.gif";
     var crunchesGif = new Image();
@@ -334,8 +334,11 @@ init = function() {
     // och kollar om kordinaterna för klicket 
     // är lika med knappens kordinater
     processClick = function(event) {
+        // ställer om x och y kordinaterna i relation till canvasen 
+        // istället för hela fönstret
         var x = event.x - rect.left;
         var y = event.y - rect.top;
+        //Om mainscreen är den aktiva skärmen
         if (mainScreenButtons[0].active) {
             if (squatButton.checkClick(x, y)) {
                 startQuiz(squatsQuiz);
@@ -357,6 +360,7 @@ init = function() {
             }
             return;
         }
+        //Om quizscreen är den aktiva skärmen
         if (quizScreenButtons[0].active) {
             if (option1Button.checkClick(x, y)) {
                 advanceQuiz(1);
