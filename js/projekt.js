@@ -177,6 +177,9 @@ init = function() {
             context.fillText(lines[i], 25, textpos1 + rect.top + lineOffset);
             lineOffset += 20;
         }
+        // Inget av alternativen på någon fråga är långt nog för att kräva av vi kör getLines på dom
+        // så vi slipper göra samma sak som med frågorna 
+        
         context.fillText(Option1, 20, textpos2 + rect.top);
         context.fillText(Option2, 20, textpos3 + rect.top);
         context.fillText(Option3, 20, textpos4 + rect.top);
